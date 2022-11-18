@@ -2,7 +2,7 @@ import requests
 import json
 import pandas as pd
 
-# Defininf the dictionart to hold the data of interest
+# Defining the dictionart to hold the data of interest
 all_products = {}
 
 # Page range is determined from the api for the pages at 100 products per page
@@ -27,7 +27,8 @@ for page in range(1,228):
   }
 
   response = requests.request("GET", url, headers=headers)
-
+  
+  # Iterate throgh all the products on each page and add it to the all-products dictionary
   for product in response.json()['products']:
 
     all_products[product['sku']] = {
@@ -42,7 +43,7 @@ for page in range(1,228):
                                     }
 
 # Convert the dictionary into a dataframe
-
 tvs_accessories = pd.DataFrame.from_dict(all_products, orient='index')
 
+# Convert the dataframe into an excel workbook
 tvs_accessories.to_excel(r'C:\Users\OlawaleA\Downloads\archive\tvs_accessories.xlsx')
