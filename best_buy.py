@@ -5,6 +5,7 @@ import pandas as pd
 # Defininf the dictionart to hold the data of interest
 all_products = {}
 
+# Page range is determined from the api for the pages at 100 products per page
 for page in range(1,228):
   url = f"https://www.bestbuy.ca/api/v2/json/sku-collections/16077?categoryid=&currentRegion=ON&include=facets%2C%20redirects&lang=en-CA&page={page}&pageSize=100&path=&query=&exp=labels%2Csearch_abtesting_5050_conversion%3Aa&sortBy=relevance&sortDir=desc"
 
